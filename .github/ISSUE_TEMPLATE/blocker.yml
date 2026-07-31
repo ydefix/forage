@@ -1,0 +1,32 @@
+# mission-control:managed version=2.0.0 digest=sha256:1c74f5c3b15fd6cd43ce72e61f501199c02bc3434f540a2c09c91b84abad5081
+name: Blocker or question
+description: A bounded decision or dependency preventing progress.
+title: "[Blocker] "
+labels: ["status:blocked"]
+body:
+  - type: textarea
+    id: blocked
+    attributes:
+      label: What is blocked?
+      description: Link the affected task, run, or design.
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Exact question or missing dependency
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options, recommendation, and safe default
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Decision owner
+      placeholder: "@github-handle"
+    validations:
+      required: true

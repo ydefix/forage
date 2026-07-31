@@ -22,3 +22,7 @@ chroma_db/
 .env
 .env.*
 !*.example
+
+# mission-control:begin version=2.0.0
+.mission-control/enrollments/*.local.json
+# mission-control:end

@@ -1,0 +1,36 @@
+# mission-control:managed version=2.0.0 digest=sha256:7124ecc9029499f805ffec8e2f60640f614fe68304a9415772a10a91a756aeff
+name: Design decision
+description: Review a P0/P1 or cross-boundary technical decision before implementation.
+title: "[Design] "
+labels: ["kind:design"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and constraints
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed design
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and trade-offs
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Security, privacy, and compatibility boundaries
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification and rollback
+    validations:
+      required: true

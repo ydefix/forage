@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "kit": {
+    "owner": "mission-control",
+    "version": "2.0.0"
+  },
+  "taskAuthority": "legacy",
+  "projectId": "project:forage",
+  "projectName": "Forage",
+  "apiUrl": "http://127.0.0.1:4200/api",
+  "repository": {
+    "provider": "github",
+    "url": "https://github.com/ydefix/forage",
+    "owner": "ydefix",
+    "name": "forage",
+    "defaultBranch": "main",
+    "sync": {
+      "status": "attention",
+      "detail": "Repository is not visible to the configured GitHub App. Native Markdown task sync continues.",
+      "repairUrl": "https://github.com/settings/installations"
+    }
+  },
+  "project": {
+    "lead": {
+      "id": "github:chipoto69",
+      "kind": "human",
+      "displayName": "Rudy",
+      "identities": {
+        "github": {
+          "login": "chipoto69",
+          "url": "https://github.com/chipoto69"
+        }
+      }
+    },
+    "repository": {
+      "provider": "github",
+      "url": "https://github.com/ydefix/forage",
+      "owner": "ydefix",
+      "name": "forage",
+      "defaultBranch": "main",
+      "sync": {
+        "status": "attention",
+        "detail": "Repository is not visible to the configured GitHub App. Native Markdown task sync continues.",
+        "repairUrl": "https://github.com/settings/installations"
+      }
+    }
+  },
+  "registration": {
+    "company": {
+      "id": "company:forage",
+      "name": "Forage",
+      "code": "FRG",
+      "thesis": "Local search agent that curates verified evidence from a corpus — seven-tool stateful retrieval harness for locally-served LLMs (Qwen3.6/Gemma, Apple Silicon).",
+      "state": "active",
+      "lead": {
+        "id": "github:chipoto69",
+        "kind": "human",
+        "displayName": "Rudy",
+        "identities": {
+          "github": {
+            "login": "chipoto69",
+            "url": "https://github.com/chipoto69"
+          }
+        }
+      },
+      "provenance": {
+        "source": "ydefix",
+        "sourceId": "company:forage",
+        "sourceUrl": "https://github.com/ydefix/forage",
+        "syncedAt": "2026-07-31T05:59:11.465Z"
+      },
+      "updatedAt": "2026-07-31T05:59:11.465Z"
+    },
+    "project": {
+      "id": "project:forage",
+      "companyId": "company:forage",
+      "name": "Forage",
+      "code": "FRG",
+      "summary": "Local search agent that curates verified evidence from a corpus — seven-tool stateful retrieval harness for locally-served LLMs (Qwen3.6/Gemma, Apple Silicon).",
+      "state": "active",
+      "lead": {
+        "id": "github:chipoto69",
+        "kind": "human",
+        "displayName": "Rudy",
+        "identities": {
+          "github": {
+            "login": "chipoto69",
+            "url": "https://github.com/chipoto69"
+          }
+        }
+      },
+      "responsibilities": [],
+      "repository": {
+        "provider": "github",
+        "url": "https://github.com/ydefix/forage",
+        "owner": "ydefix",
+        "name": "forage",
+        "defaultBranch": "main",
+        "sync": {
+          "status": "attention",
+          "detail": "Repository is not visible to the configured GitHub App. Native Markdown task sync continues.",
+          "repairUrl": "https://github.com/settings/installations"
+        }
+      },
+      "provenance": {
+        "source": "ydefix",
+        "sourceId": "project:forage",
+        "sourceUrl": "https://github.com/ydefix/forage",
+        "syncedAt": "2026-07-31T05:59:11.465Z"
+      },
+      "updatedAt": "2026-07-31T05:59:11.465Z"
+    }
+  },
+  "repositoryGovernance": {
+    "provider": "github",
+    "profile": "collaborative",
+    "requiredChecks": [
+      "canonical-task-link"
+    ],
+    "managedRulesetName": "Mission Control / default branch"
+  },
+  "taskProjection": {
+    "source": {
+      "system": "ydefix",
+      "instanceId": "ydefix:forage:tasks",
+      "label": "Forage task ledger"
+    },
+    "reporter": {
+      "id": "service:forage:task-projector",
+      "kind": "service",
+      "displayName": "Forage task projector"
+    }
+  },
+  "taskSources": []
+}

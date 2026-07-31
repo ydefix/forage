@@ -1,0 +1,34 @@
+# mission-control:managed version=2.0.0 digest=sha256:b5a647890e15b8c2bcf295eb353678a2ea25d20fc788b4da54d5b6aca812c2da
+name: Initiative
+description: A project-level outcome decomposed into parallel tasks or sub-issues.
+title: "[Initiative] "
+labels: ["kind:initiative"]
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What durable project result must become true?
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Scope and boundaries
+      description: Included work, explicit exclusions, and security or compatibility constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: decomposition
+    attributes:
+      label: Parallel work and dependencies
+      description: Add or link sub-issues after creation; identify the critical dependencies.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Completion evidence
+      description: Observable checks or artifacts required before this initiative is done.
+    validations:
+      required: true

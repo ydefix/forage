@@ -1,0 +1,62 @@
+# mission-control:managed version=2.0.0 digest=sha256:11914d346c02a59c30555740659059e32c9643c1fe4d51be987ce88cc85426de
+name: Mission Control culture
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled, ready_for_review]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  canonical-task-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require a canonical task link
+        shell: bash
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [[ ! "${PR_TITLE}" =~ ^(feat|fix|docs|refactor|test|chore|build|ci|perf|revert)(\([a-z0-9._/-]+\))?!?:[[:space:]].+ ]]; then
+            echo "PR title must use semantic form: type(scope): subject"
+            exit 1
+          fi
+          if [[ ",${PR_LABELS}," == *",policy:task-link-exempt,"* ]]; then
+            echo "Explicit policy exemption present."
+            exit 0
+          fi
+          issue_owner="${REPOSITORY%%/*}"
+          issue_repo="${REPOSITORY##*/}"
+          issue_number=""
+          if [[ "${PR_BODY}" =~ https://github.com/([^/]+)/([^/]+)/issues/([0-9]+) ]]; then
+            issue_owner="${BASH_REMATCH[1]}"
+            issue_repo="${BASH_REMATCH[2]}"
+            issue_number="${BASH_REMATCH[3]}"
+          elif [[ "${PR_BODY}" =~ ([Cc]loses|[Ff]ixes|[Rr]esolves)[[:space:]]+([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)\#([0-9]+) ]]; then
+            issue_owner="${BASH_REMATCH[2]}"
+            issue_repo="${BASH_REMATCH[3]}"
+            issue_number="${BASH_REMATCH[4]}"
+          elif [[ "${PR_BODY}" =~ ([Cc]loses|[Ff]ixes|[Rr]esolves)[[:space:]]+\#([0-9]+) ]]; then
+            issue_number="${BASH_REMATCH[2]}"
+          fi
+          if [[ -z "${issue_number}" ]]; then
+            echo "PR must link its canonical GitHub issue, or carry policy:task-link-exempt."
+            exit 1
+          fi
+          if issue_labels="$(gh api "repos/${issue_owner}/${issue_repo}/issues/${issue_number}" --jq '.labels[].name' 2>/dev/null)"; then
+            if grep -Eiq '^priority:p[01]$' <<<"${issue_labels}"; then
+              design_line="$(grep -Ei '^Design:[[:space:]]*' <<<"${PR_BODY}" | head -n 1 || true)"
+              if [[ -z "${design_line}" || "${design_line}" =~ [Nn]/[Aa]|[Nn]ot[[:space:]]+[Rr]equired|[Tt][Bb][Dd] || ! "${design_line}" =~ (https?://|\.md) ]]; then
+                echo "P0/P1 work requires a concrete design document reference in the Design section."
+                exit 1
+              fi
+            fi
+          else
+            echo "Could not read linked issue priority with this repository token; task link remains recorded."
+          fi
