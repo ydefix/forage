@@ -1,5 +1,5 @@
 """
-ChromaDB search backend for production use.
+ChromaDB search backend (EXPERIMENTAL — not covered by the offline CI suite).
 Supports hybrid search (semantic + keyword) and grep.
 """
 
@@ -7,8 +7,6 @@ import threading
 import time
 from typing import List, Optional, Tuple
 
-import chromadb
-from chromadb.utils import embedding_functions
 
 
 class ChromaSearchBackend:
@@ -42,6 +40,14 @@ class ChromaSearchBackend:
             cloud_api_key: Chroma Cloud API key (if use_cloud=True).
             cloud_database: Chroma Cloud database name (if use_cloud=True).
         """
+        try:
+            import chromadb
+            from chromadb.utils import embedding_functions
+        except ImportError as e:
+            raise ImportError(
+                "ChromaSearchBackend requires chromadb — install with "
+                "`pip install forage-agent[chroma]` (or `pip install chromadb`)."
+            ) from e
         self.collection_name = collection_name
 
         if use_cloud:
