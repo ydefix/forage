@@ -1,0 +1,11 @@
+Forage
+Copyright 2026 Ydefix / Init & Co.
+
+This product adapts the stateful search-harness design of harness-1
+(Pengcheng Jiang et al., 2026 — https://github.com/pat-jj/harness-1,
+arXiv 2606.02373), licensed under the Apache License, Version 2.0.
+The Forage implementation targets locally-served Qwen3.6 / Gemma models
+via OpenAI-compatible endpoints (e.g. oMLX) on Apple Silicon.
+
+The name "Forage" is a reference to Information Foraging Theory
+(Pirolli & Card, Xerox PARC).

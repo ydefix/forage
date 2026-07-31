@@ -1,0 +1,24 @@
+# caches / build
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# model weights & vector stores (never commit)
+models/
+*.safetensors
+*.gguf
+*.npz
+.chroma/
+chroma_db/
+*.sqlite3
+
+# local secrets / env
+.env
+.env.*
+!*.example
