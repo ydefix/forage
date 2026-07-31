@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from harness import SearchAgent, InMemorySearchBackend  # noqa: E402
+from forage import SearchAgent, InMemorySearchBackend  # noqa: E402
 
 DOCS = [
     ("d1", "The aperture accent is lavender #B4A8FF in the Environ Console world."),
@@ -95,7 +95,7 @@ class TestVerifyEdge(unittest.TestCase):
         self.assertEqual(len(agent._memory.verification_records), 0)
 
     def test_verify_tool_is_registered(self):
-        from harness.tools import ALL_TOOLS
+        from forage.tools import ALL_TOOLS
         names = [t["function"]["name"] for t in ALL_TOOLS]
         self.assertIn("verify", names)
         self.assertEqual(len(names), 7)

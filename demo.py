@@ -3,7 +3,7 @@
 Demo: Qwen3.6 search harness via oMLX.
 
 Requires an oMLX endpoint (oMLX :9393). Defaults to http://localhost:9393,
-matching harness/agent.py and eval_benchmark.py; point FORAGE_OMLX_URL at the
+matching forage/agent.py and eval_benchmark.py; point FORAGE_OMLX_URL at the
 Studio's tailnet address (e.g. http://<remote-host>:9393) to run remotely.
 
 Usage:
@@ -15,10 +15,10 @@ import os
 import sys
 from pathlib import Path
 
-# Add harness-search to path
+# Add the repo root to path (also works without installing the package)
 sys.path.insert(0, str(Path(__file__).parent))
 
-from harness import SearchAgent, InMemorySearchBackend
+from forage import SearchAgent, InMemorySearchBackend
 
 # ─── Sample documents (simulating a retrieval corpus) ────────────────────────
 
