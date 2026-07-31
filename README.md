@@ -61,30 +61,31 @@ replayable, testable, and ultimately trainable.
 
 ```bash
 git clone https://github.com/ydefix/forage.git
-cd forage
+cd forage && pip install -e .                      # or: pip install -e ".[chroma]"
 
 # offline: the full loop, proven with a scripted deterministic LLM — no model needed
-python3 -m unittest discover -s tests -v          # 8/8
+python3 -m unittest discover -s tests -v          # 12/12
 
 # live: point it at any OpenAI-compatible endpoint serving a tool-calling model
 python3 demo.py                                    # default http://localhost:9393
 FORAGE_OMLX_URL=http://<remote-host>:9393 python3 demo.py
 ```
 
-Requires Python ≥ 3.9 and `requests`. The demo uses a tiny in-memory corpus; wire your own
-by implementing the two-method backend interface (`search`, `grep`) — see `harness/backend.py`.
+Requires Python ≥ 3.9 (core dependency: `requests` only). The demo uses a tiny in-memory
+corpus; wire your own by implementing the two-method
+[`SearchBackend`](forage/backends/base.py) protocol — or use the bundled ChromaDB backend.
 
 ## Layout
 
 | Path | What |
 |---|---|
-| `harness/agent.py` | `SearchAgent` — the tool loop, system prompt, curate-nudge |
-| `harness/state.py` | `WorkingMemory` / `Document` / `SearchResult` / `VerificationRecord` |
-| `harness/tools.py` | function-calling schemas for all seven tools |
-| `harness/backend.py` | backend interface + in-memory reference implementation |
-| `tests/` | deterministic offline loop tests (scripted LLM — no model needed) |
+| `forage/agent.py` | `SearchAgent` — the tool loop, system prompt, curate-nudge |
+| `forage/state.py` | `WorkingMemory` / `Document` / `SearchResult` / `VerificationRecord` |
+| `forage/tools.py` | function-calling schemas for all seven tools |
+| `forage/backends/` | pluggable backends: `SearchBackend` protocol · in-memory · ChromaDB |
+| `tests/` | deterministic offline loop + backend tests (scripted LLM — no model needed) |
 | `demo.py` / `eval_benchmark.py` | runnable entry points (recall / precision / F1) |
-| `DESIGN.md` | the harness-1 → Qwen3 adaptation spec and 4-phase plan |
+| `DESIGN.md` / `CONTRIBUTING.md` | the adaptation spec · extension points and the test law |
 
 ## Status & roadmap
 
