@@ -15,9 +15,8 @@
     "name": "forage",
     "defaultBranch": "main",
     "sync": {
-      "status": "attention",
-      "detail": "Repository is not visible to the configured GitHub App. Native Markdown task sync continues.",
-      "repairUrl": "https://github.com/settings/installations"
+      "status": "connected",
+      "detail": "GitHub App can read this repository; issue synchronization may be enabled."
     }
   },
   "project": {
@@ -39,9 +38,8 @@
       "name": "forage",
       "defaultBranch": "main",
       "sync": {
-        "status": "attention",
-        "detail": "Repository is not visible to the configured GitHub App. Native Markdown task sync continues.",
-        "repairUrl": "https://github.com/settings/installations"
+        "status": "connected",
+        "detail": "GitHub App can read this repository; issue synchronization may be enabled."
       }
     }
   },
@@ -97,9 +95,8 @@
         "name": "forage",
         "defaultBranch": "main",
         "sync": {
-          "status": "attention",
-          "detail": "Repository is not visible to the configured GitHub App. Native Markdown task sync continues.",
-          "repairUrl": "https://github.com/settings/installations"
+          "status": "connected",
+          "detail": "GitHub App can read this repository; issue synchronization may be enabled."
         }
       },
       "provenance": {

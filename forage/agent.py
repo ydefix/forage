@@ -6,6 +6,7 @@ Adapted from harness-1 (Pengcheng Jiang et al., 2026).
 """
 
 import json
+import os
 import time
 import re
 from typing import Any, Dict, List, Optional, Tuple
@@ -50,7 +51,7 @@ class SearchAgent:
         # result.curated_docs has the final evidence set
     """
     
-    base_url: str = "http://localhost:9393"
+    base_url: str = field(default_factory=lambda: os.environ.get("FORAGE_OMLX_URL", "http://localhost:9393"))
     model: str = "Qwen3.6-27B-OptiQ-4bit"
     max_turns: int = 35
     temperature: float = 0.7

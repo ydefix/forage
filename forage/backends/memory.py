@@ -1,6 +1,6 @@
 """
-Minimal ChromaDB search backend with in-memory document store.
-For demo/testing before wiring to a real corpus.
+Dependency-free in-memory backend — the reference SearchBackend implementation
+used by the demo and the offline test suite.
 """
 
 from typing import List, Tuple, Optional
@@ -8,8 +8,9 @@ from typing import List, Tuple, Optional
 
 class InMemorySearchBackend:
     """
-    Simple in-memory search backend for testing the harness.
-    Replace with ChromaDB for production use.
+    Simple keyword/regex in-memory backend for tests and demos.
+    For a real corpus, implement forage.backends.base.SearchBackend
+    or use forage.backends.chroma.ChromaSearchBackend.
     """
     
     def __init__(self, documents: List[Tuple[str, str]] = None):

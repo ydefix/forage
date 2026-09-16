@@ -1,12 +1,12 @@
-"""Search harness package."""
+"""Forage — a search agent that curates verified evidence instead of answering."""
 
 from .state import WorkingMemory, Document, TurnContext
 from .tools import ALL_TOOLS
 from .agent import SearchAgent, SYSTEM_PROMPT
-from .backend import InMemorySearchBackend
+from .backends import SearchBackend, InMemorySearchBackend, ChromaSearchBackend
 
 __all__ = [
     "WorkingMemory", "Document", "TurnContext",
     "ALL_TOOLS", "SearchAgent", "SYSTEM_PROMPT",
-    "InMemorySearchBackend",
+    "SearchBackend", "InMemorySearchBackend", "ChromaSearchBackend",
 ]

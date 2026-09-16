@@ -18,7 +18,7 @@ from typing import List, Dict, Set, Tuple
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from harness import SearchAgent, InMemorySearchBackend
+from forage import SearchAgent, InMemorySearchBackend
 from training.reward import compute_reward, compute_precision, compute_recall, compute_f1
 
 
